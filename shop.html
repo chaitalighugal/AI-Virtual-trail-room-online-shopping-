@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - VirtualFit</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="shop.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2><i class="fas fa-tshirt"></i> VirtualFit</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="shop.html" class="nav-link active">Shop</a>
+                </li>
+                <li class="nav-item">
+                    <a href="virtual-tryon.html" class="nav-link">Virtual Try-On</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Shop Header -->
+    <section class="shop-header">
+        <div class="container">
+            <h1><i class="fas fa-shopping-bag"></i> Shop Collection</h1>
+            <p>Discover our latest fashion trends and try them on virtually before you buy</p>
+        </div>
+    </section>
+
+    <!-- Filters and Search -->
+    <section class="shop-filters">
+        <div class="container">
+            <div class="filters-container">
+                <!-- Search Bar -->
+                <div class="search-section">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="search-input" placeholder="Search products...">
+                    </div>
+                </div>
+
+                <!-- Category Filter -->
+                <div class="filter-section">
+                    <h4><i class="fas fa-filter"></i> Categories</h4>
+                    <div class="filter-options">
+                        <button class="filter-btn active" data-category="all">
+                            <i class="fas fa-th"></i> All
+                        </button>
+                        <button class="filter-btn" data-category="men">
+                            <i class="fas fa-male"></i> Men
+                        </button>
+                        <button class="filter-btn" data-category="women">
+                            <i class="fas fa-female"></i> Women
+                        </button>
+                        <button class="filter-btn" data-category="kids">
+                            <i class="fas fa-child"></i> Kids
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Type Filter -->
+                <div class="filter-section">
+                    <h4><i class="fas fa-tags"></i> Type</h4>
+                    <div class="filter-options">
+                        <button class="filter-btn active" data-type="all">
+                            All Types
+                        </button>
+                        <button class="filter-btn" data-type="tops">
+                            Tops
+                        </button>
+                        <button class="filter-btn" data-type="bottoms">
+                            Bottoms
+                        </button>
+                        <button class="filter-btn" data-type="dresses">
+                            Dresses
+                        </button>
+                        <button class="filter-btn" data-type="accessories">
+                            Accessories
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Price Filter -->
+                <div class="filter-section">
+                    <h4><i class="fas fa-dollar-sign"></i> Price Range</h4>
+                    <div class="price-range">
+                        <input type="range" id="price-min" min="0" max="200" value="0">
+                        <input type="range" id="price-max" min="0" max="200" value="200">
+                        <div class="price-labels">
+                            <span id="price-min-label">$0</span>
+                            <span id="price-max-label">$200</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sort Options -->
+                <div class="filter-section">
+                    <h4><i class="fas fa-sort"></i> Sort By</h4>
+                    <select id="sort-select">
+                        <option value="name">Name A-Z</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="newest">Newest First</option>
+                        <option value="popular">Most Popular</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="products-section">
+        <div class="container">
+            <div class="products-header">
+                <h2>Products</h2>
+                <div class="view-toggle">
+                    <button class="view-btn active" data-view="grid">
+                        <i class="fas fa-th"></i>
+                    </button>
+                    <button class="view-btn" data-view="list">
+                        <i class="fas fa-list"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="products-grid" id="products-grid">
+                <!-- Men's Products -->
+                <div class="product-card" data-category="men" data-type="tops" data-price="29.99" data-name="Red T-Shirt">
+                    <div class="product-image">
+                        <i class="fas fa-tshirt fa-4x"></i>
+                        <div class="product-overlay">
+                            <button class="quick-view-btn" data-product="red-tshirt">
+                                <i class="fas fa-eye"></i> Quick View
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Red T-Shirt</h3>
+                        <p class="product-category">Men's Tops</p>
+                        <p class="product-price">$29.99</p>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(24 reviews)</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn btn-primary try-virtual-btn" data-item="red-tshirt">
+                                <i class="fas fa-camera"></i> Virtual Try-On
+                            </button>
+                            <button class="btn btn-outline add-to-cart-btn" data-product="red-tshirt">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="men" data-type="tops" data-price="39.99" data-name="Blue Casual Shirt">
+                    <div class="product-image">
+                        <i class="fas fa-tshirt fa-4x"></i>
+                        <div class="product-overlay">
+                            <button class="quick-view-btn" data-product="blue-shirt">
+                                <i class="fas fa-eye"></i> Quick View
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Blue Casual Shirt</h3>
+                        <p class="product-category">Men's Tops</p>
+                        <p class="product-price">$39.99</p>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(18 reviews)</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn btn-primary try-virtual-btn" data-item="blue-shirt">
+                                <i class="fas fa-camera"></i> Virtual Try-On
+                            </button>
+                            <button class="btn btn-outline add-to-cart-btn" data-product="blue-shirt">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="men" data-type="tops" data-price="59.99" data-name="Black Hoodie">
+                    <div class="product-image">
+                        <i class="fas fa-tshirt fa-4x"></i>
+                        <div class="product-overlay">
+                            <button class="quick-view-btn" data-product="black-hoodie">
+                                <i class="fas fa-eye"></i> Quick View
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Black Hoodie</h3>
+                        <p class="product-category">Men's Tops</p>
+                        <p class="product-price">$59.99</p>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(31 reviews)</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn btn-primary try-virtual-btn" data-item="black-hoodie">
+                                <i class="fas fa-camera"></i> Virtual Try-On
+                            </button>
+                            <button class="btn btn-outline add-to-cart-btn" data-product="black-hoodie">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="men" data-type="bottoms" data-price="79.99" data-name="Blue Jeans">
+                    <div class="product-image">
+                        <i class="fas fa-user-tie fa-4x"></i>
+                        <div class="product-overlay">
+                            <button class="quick-view-btn" data-product="blue-jeans">
+                                <i class="fas fa-eye"></i> Quick View
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Blue Jeans</h3>
+                        <p class="product-category">Men's Bottoms</p>
+                        <p class="product-price">$79.99</p>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(42 reviews)</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn btn-primary try-virtual-btn" data-item="blue-jeans">
+                                <i class="fas fa-camera"></i> Virtual Try-On
+                            </button>
+                            <button class="btn btn-outline add-to-cart-btn" data-product="blue-jeans">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Women's Products -->
+                <div class="product-card" data-category="women" data-type="dresses" data-price="69.99" data-name="Summer Dress">
+                    <div class="product-image">
+                        <i class="fas fa-female fa-4x"></i>
+                        <div class="product-overlay">
+                            <button class="quick-view-btn" data-product="summer-dress">
+                                <i class="fas fa-eye"></i> Quick View
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Summer Dress</h3>
+                        <p class="product-category">Women's Dresses</p>
+                        <p class="product-price">$69.99</p>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(27 reviews)</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn btn-primary try-virtual-btn" data-item="summer-dress">
+                                <i class="fas fa-camera"></i> Virtual Try-On
+                            </button>
+                            <button class="btn btn-outline add-to-cart-btn" data-product="summer-dress">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="women" data-type="dresses" data-price="129.99" data-name="Evening Dress">
+                    <div class="product-image">
+                        <i class="fas fa-female fa-4x"></i>
+                        <div class="product-overlay">
+                            <button class="quick-view-btn" data-product="evening-dress">
+                                <i class="fas fa-eye"></i> Quick View
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Evening Dress</h3>
+                        <p class="product-category">Women's Dresses</p>
+                        <p class="product-price">$129.99</p>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(15 reviews)</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn btn-primary try-virtual-btn" data-item="evening-dress">
+                                <i class="fas fa-camera"></i> Virtual Try-On
+                            </button>
+                            <button class="btn btn-outline add-to-cart-btn" data-product="evening-dress">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="women" data-type="bottoms" data-price="89.99" data-name="Black Formal Pants">
+                    <div class="product-image">
+                        <i class="fas fa-user-tie fa-4x"></i>
+                        <div class="product-overlay">
+                            <button class="quick-view-btn" data-product="black-pants">
+                                <i class="fas fa-eye"></i> Quick View
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Black Formal Pants</h3>
+                        <p class="product-category">Women's Bottoms</p>
+                        <p class="product-price">$89.99</p>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(22 reviews)</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn btn-primary try-virtual-btn" data-item="black-pants">
+                                <i class="fas fa-camera"></i> Virtual Try-On
+                            </button>
+                            <button class="btn btn-outline add-to-cart-btn" data-product="black-pants">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accessories -->
+                <div class="product-card" data-category="men" data-type="accessories" data-price="49.99" data-name="Sunglasses">
+                    <div class="product-image">
+                        <i class="fas fa-glasses fa-4x"></i>
+                        <div class="product-overlay">
+                            <button class="quick-view-btn" data-product="sunglasses">
+                                <i class="fas fa-eye"></i> Quick View
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Sunglasses</h3>
+                        <p class="product-category">Accessories</p>
+                        <p class="product-price">$49.99</p>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(33 reviews)</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn btn-primary try-virtual-btn" data-item="sunglasses">
+                                <i class="fas fa-camera"></i> Virtual Try-On
+                            </button>
+                            <button class="btn btn-outline add-to-cart-btn" data-product="sunglasses">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="kids" data-type="accessories" data-price="24.99" data-name="Baseball Cap">
+                    <div class="product-image">
+                        <i class="fas fa-glasses fa-4x"></i>
+                        <div class="product-overlay">
+                            <button class="quick-view-btn" data-product="cap">
+                                <i class="fas fa-eye"></i> Quick View
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Baseball Cap</h3>
+                        <p class="product-category">Kids' Accessories</p>
+                        <p class="product-price">$24.99</p>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(19 reviews)</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn btn-primary try-virtual-btn" data-item="cap">
+                                <i class="fas fa-camera"></i> Virtual Try-On
+                            </button>
+                            <button class="btn btn-outline add-to-cart-btn" data-product="cap">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No Results Message -->
+            <div class="no-results" id="no-results" style="display: none;">
+                <i class="fas fa-search fa-3x"></i>
+                <h3>No products found</h3>
+                <p>Try adjusting your filters or search terms</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-tshirt"></i> VirtualFit</h3>
+                    <p>Revolutionizing online shopping with AI-powered virtual try-on technology.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="virtual-tryon.html">Virtual Try-On</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="shop.html?category=men">Men's Clothing</a></li>
+                        <li><a href="shop.html?category=women">Women's Clothing</a></li>
+                        <li><a href="shop.html?category=kids">Kids' Clothing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-envelope"></i> info@virtualfit.com</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Fashion St, Style City</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 VirtualFit. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="shop.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 600" width="300" height="600">
+  <!-- Pink Corset Dress -->
+  <!-- Shoulder straps -->
+  <rect x="95" y="20" width="6" height="80" fill="#f8bbd9" rx="3"/>
+  <rect x="199" y="20" width="6" height="80" fill="#f8bbd9" rx="3"/>
+  
+  <!-- Main bodice/corset top -->
+  <rect x="90" y="100" width="120" height="100" fill="#f8bbd9" rx="8"/>
+  
+  <!-- Corset panel details -->
+  <rect x="95" y="105" width="110" height="90" fill="#f3a6d1" rx="5"/>
+  
+  <!-- Vertical corset seams -->
+  <line x1="110" y1="105" x2="110" y2="195" stroke="#e879b9" stroke-width="2"/>
+  <line x1="125" y1="105" x2="125" y2="195" stroke="#e879b9" stroke-width="2"/>
+  <line x1="140" y1="105" x2="140" y2="195" stroke="#e879b9" stroke-width="2"/>
+  <line x1="155" y1="105" x2="155" y2="195" stroke="#e879b9" stroke-width="2"/>
+  <line x1="170" y1="105" x2="170" y2="195" stroke="#e879b9" stroke-width="2"/>
+  <line x1="185" y1="105" x2="185" y2="195" stroke="#e879b9" stroke-width="2"/>
+  
+  <!-- Horizontal corset lines -->
+  <line x1="95" y1="120" x2="205" y2="120" stroke="#e879b9" stroke-width="1"/>
+  <line x1="95" y1="135" x2="205" y2="135" stroke="#e879b9" stroke-width="1"/>
+  <line x1="95" y1="150" x2="205" y2="150" stroke="#e879b9" stroke-width="1"/>
+  <line x1="95" y1="165" x2="205" y2="165" stroke="#e879b9" stroke-width="1"/>
+  <line x1="95" y1="180" x2="205" y2="180" stroke="#e879b9" stroke-width="1"/>
+  
+  <!-- Skirt part -->
+  <path d="M 90 200 L 210 200 Q 220 210 225 230 Q 230 250 235 280 Q 240 320 245 360 Q 250 400 255 440 L 45 440 Q 50 400 55 360 Q 60 320 65 280 Q 70 250 75 230 Q 80 210 90 200 Z" fill="#f8bbd9"/>
+  
+  <!-- Skirt pleats/gathers -->
+  <path d="M 100 200 Q 105 220 110 240 Q 115 260 120 280 Q 125 300 130 320 Q 135 340 140 360 Q 145 380 150 400 Q 155 420 160 440" stroke="#f3a6d1" stroke-width="1" fill="none"/>
+  <path d="M 120 200 Q 125 220 130 240 Q 135 260 140 280 Q 145 300 150 320 Q 155 340 160 360 Q 165 380 170 400 Q 175 420 180 440" stroke="#f3a6d1" stroke-width="1" fill="none"/>
+  <path d="M 140 200 Q 145 220 150 240 Q 155 260 160 280 Q 165 300 170 320 Q 175 340 180 360 Q 185 380 190 400 Q 195 420 200 440" stroke="#f3a6d1" stroke-width="1" fill="none"/>
+  <path d="M 160 200 Q 165 220 170 240 Q 175 260 180 280 Q 185 300 190 320 Q 195 340 200 360 Q 205 380 210 400 Q 215 420 220 440" stroke="#f3a6d1" stroke-width="1" fill="none"/>
+  <path d="M 180 200 Q 185 220 190 240 Q 195 260 200 280 Q 205 300 210 320 Q 215 340 220 360 Q 225 380 230 400 Q 235 420 240 440" stroke="#f3a6d1" stroke-width="1" fill="none"/>
+  
+  <!-- Hem detail -->
+  <ellipse cx="150" cy="440" rx="105" ry="8" fill="#e879b9"/>
+</svg>

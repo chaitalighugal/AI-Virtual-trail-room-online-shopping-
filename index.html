@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VirtualFit - AI-Powered Virtual Trial Room</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2><i class="fas fa-tshirt"></i> VirtualFit</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="shop.html" class="nav-link">Shop</a>
+                </li>
+                <li class="nav-item">
+                    <a href="virtual-tryon.html" class="nav-link">Virtual Try-On</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Try Before You Buy</h1>
+            <p>Experience the future of online shopping with our AI-powered virtual trial room. See how clothes look on you in real-time!</p>
+            <div class="hero-buttons">
+                <a href="virtual-tryon.html" class="btn btn-primary">Start Virtual Try-On</a>
+                <a href="shop.html" class="btn btn-secondary">Browse Collection</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="virtual-mirror">
+                <i class="fas fa-camera fa-3x"></i>
+                <p>AI-Powered Mirror</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Virtual Mirror Section -->
+    <section class="virtual-mirror-section">
+        <div class="container">
+            <div class="mirror-header">
+                <h2><i class="fas fa-magic"></i> AI-Powered Virtual Mirror</h2>
+                <p>Try on clothes instantly with live camera or upload your photo</p>
+                <div class="feature-badges">
+                    <div class="feature-badge">
+                        <i class="fas fa-video"></i>
+                        <span>Live Camera</span>
+                    </div>
+                    <div class="feature-badge">
+                        <i class="fas fa-user-check"></i>
+                        <span>Body Detection</span>
+                    </div>
+                    <div class="feature-badge">
+                        <i class="fas fa-brain"></i>
+                        <span>AI Fitting</span>
+                    </div>
+                    <div class="feature-badge">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>Responsive</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mirror-container">
+                <!-- Camera Section -->
+                <div class="camera-section">
+                    <div class="camera-container">
+                        <video id="video" autoplay muted playsinline></video>
+                        <canvas id="canvas"></canvas>
+                        <canvas id="body-detection-canvas"></canvas>
+                        <div class="overlay-container">
+                            <img id="clothing-overlay" alt="Clothing overlay">
+                        </div>
+                        <div class="ai-detection-overlay" id="ai-detection-overlay" style="display: none;">
+                            <h4><i class="fas fa-user-check"></i> Body Analysis</h4>
+                            <div id="measurement-display">
+                                <div class="measurement-item">
+                                    <span>Height:</span>
+                                    <span id="height-value">--</span>
+                                </div>
+                                <div class="measurement-item">
+                                    <span>Chest:</span>
+                                    <span id="chest-value">--</span>
+                                </div>
+                                <div class="measurement-item">
+                                    <span>Waist:</span>
+                                    <span id="waist-value">--</span>
+                                </div>
+                                <div class="measurement-item">
+                                    <span>Body Type:</span>
+                                    <span id="body-type-value">--</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Camera Controls -->
+                    <div class="camera-controls">
+                        <button id="start-camera-btn" class="btn btn-primary">
+                            <i class="fas fa-video"></i> Start AI Mirror
+                        </button>
+                        <button id="stop-camera-btn" class="btn btn-secondary" style="display: none;">
+                            <i class="fas fa-stop"></i> Stop Camera
+                        </button>
+                        <button id="enable-body-detection-btn" class="btn btn-ai" style="display: none;">
+                            <i class="fas fa-user-check"></i> Enable Body Detection
+                        </button>
+                        <button id="get-ai-suggestions-btn" class="btn btn-ai" style="display: none;">
+                            <i class="fas fa-brain"></i> Get AI Suggestions
+                        </button>
+                        <button id="screenshot-btn" class="btn btn-success" style="display: none;">
+                            <i class="fas fa-camera"></i> Take Photo
+                        </button>
+                        <button id="switch-camera-btn" class="btn btn-outline" style="display: none;">
+                            <i class="fas fa-sync-alt"></i> Switch Camera
+                        </button>
+                    </div>
+                    
+                    <!-- Upload Section -->
+                    <div class="upload-section">
+                        <label for="photo-upload" class="upload-btn">
+                            <i class="fas fa-upload"></i> Upload Your Photo
+                        </label>
+                        <input type="file" id="photo-upload" accept="image/*" style="display: none;">
+                    </div>
+                    
+                    <!-- Status Messages -->
+                    <div class="status-messages">
+                        <div id="loading-message" class="status-message" style="display: none;">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <span>Initializing camera...</span>
+                        </div>
+                        <div id="ai-processing-message" class="status-message ai-processing" style="display: none;">
+                            <i class="fas fa-brain fa-spin"></i>
+                            <span>AI is analyzing your body...</span>
+                        </div>
+                        <div id="error-message" class="status-message error" style="display: none;">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <span></span>
+                        </div>
+                        <div id="success-message" class="status-message success" style="display: none;">
+                            <i class="fas fa-check-circle"></i>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Clothing Panel -->
+                <div class="clothing-panel">
+                    <h3><i class="fas fa-tshirt"></i> Quick Try-On</h3>
+                    
+                    <!-- AI Recommendations -->
+                    <div class="ai-recommendations" id="ai-recommendations-section" style="display: none;">
+                        <h4><i class="fas fa-brain"></i> AI Recommendations</h4>
+                        <div id="ai-recommendations-list">
+                            <!-- AI recommendations will be populated here -->
+                        </div>
+                    </div>
+                    
+                    <!-- Category Tabs -->
+                    <div class="category-tabs">
+                        <button class="tab-btn active" data-category="tops">
+                            <i class="fas fa-tshirt"></i>
+                            <span>Tops</span>
+                        </button>
+                        <button class="tab-btn" data-category="bottoms">
+                            <i class="fas fa-user-tie"></i>
+                            <span>Bottoms</span>
+                        </button>
+                        <button class="tab-btn" data-category="dresses">
+                            <i class="fas fa-female"></i>
+                            <span>Dresses</span>
+                        </button>
+                        <button class="tab-btn" data-category="accessories">
+                            <i class="fas fa-glasses"></i>
+                            <span>Accessories</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Clothing Grid -->
+                    <div class="clothing-grid" id="clothing-grid">
+                        <!-- Tops -->
+                        <div class="clothing-item" data-category="tops" data-overlay="https://via.placeholder.com/300x400/FF6B6B/FFFFFF?text=Red+T-Shirt">
+                            <div class="item-image">
+                                <i class="fas fa-tshirt fa-2x"></i>
+                            </div>
+                            <h4>Classic Red T-Shirt</h4>
+                            <div class="price">$29.99</div>
+                            <button class="try-on-btn" data-item="red-tshirt">Try On</button>
+                        </div>
+                        
+                        <div class="clothing-item" data-category="tops" data-overlay="https://via.placeholder.com/300x400/4ECDC4/FFFFFF?text=Blue+Shirt">
+                            <div class="item-image">
+                                <i class="fas fa-tshirt fa-2x"></i>
+                            </div>
+                            <h4>Blue Casual Shirt</h4>
+                            <div class="price">$39.99</div>
+                            <button class="try-on-btn" data-item="blue-shirt">Try On</button>
+                        </div>
+                        
+                        <div class="clothing-item" data-category="bottoms" data-overlay="https://via.placeholder.com/300x500/45B7D1/FFFFFF?text=Jeans" style="display: none;">
+                            <div class="item-image">
+                                <i class="fas fa-user-tie fa-2x"></i>
+                            </div>
+                            <h4>Classic Blue Jeans</h4>
+                            <div class="price">$59.99</div>
+                            <button class="try-on-btn" data-item="blue-jeans">Try On</button>
+                        </div>
+                        
+                        <div class="clothing-item" data-category="dresses" data-overlay="dress1.svg" style="display: none;">
+                            <div class="item-image">
+                                <i class="fas fa-female fa-2x" style="color: #dc2626;"></i>
+                            </div>
+                            <h4>Red Pleated Skirt Outfit</h4>
+                            <div class="price">$89.99</div>
+                            <button class="try-on-btn" data-item="red-dress">Try On</button>
+                        </div>
+                        
+                        <div class="clothing-item" data-category="dresses" data-overlay="dress2.svg" style="display: none;">
+                            <div class="item-image">
+                                <i class="fas fa-female fa-2x" style="color: #ec4899;"></i>
+                            </div>
+                            <h4>Pink Ruffle Party Dress</h4>
+                            <div class="price">$129.99</div>
+                            <button class="try-on-btn" data-item="pink-dress">Try On</button>
+                        </div>
+                        
+                        <div class="clothing-item" data-category="dresses" data-overlay="dress3.svg" style="display: none;">
+                            <div class="item-image">
+                                <i class="fas fa-female fa-2x" style="color: #f8bbd9;"></i>
+                            </div>
+                            <h4>Pink Corset Dress</h4>
+                            <div class="price">$99.99</div>
+                            <button class="try-on-btn" data-item="corset-dress">Try On</button>
+                        </div>
+                        
+                        <div class="clothing-item" data-category="accessories" data-overlay="https://via.placeholder.com/200x100/F39C12/FFFFFF?text=Sunglasses" style="display: none;">
+                            <div class="item-image">
+                                <i class="fas fa-glasses fa-2x"></i>
+                            </div>
+                            <h4>Stylish Sunglasses</h4>
+                            <div class="price">$19.99</div>
+                            <button class="try-on-btn" data-item="sunglasses">Try On</button>
+                        </div>
+                    </div>
+                    
+                    <!-- AI-Enhanced Try-On Controls -->
+                    <div class="tryon-controls">
+                        <h4><i class="fas fa-sliders-h"></i> AI-Enhanced Controls</h4>
+                        
+                        <div class="auto-fit-section">
+                            <button id="auto-size-fit" class="auto-fit-btn">
+                                <i class="fas fa-magic"></i> Auto Size Fitting
+                            </button>
+                        </div>
+                        
+                        <div class="position-controls">
+                            <div class="control-group">
+                                <label for="position-x">Horizontal Position</label>
+                                <input type="range" id="position-x" min="-50" max="50" value="0">
+                                <span id="position-x-value">0</span>
+                            </div>
+                            <div class="control-group">
+                                <label for="position-y">Vertical Position</label>
+                                <input type="range" id="position-y" min="-50" max="50" value="0">
+                                <span id="position-y-value">0</span>
+                            </div>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label for="overlay-opacity">Opacity</label>
+                            <input type="range" id="overlay-opacity" min="0" max="100" value="80">
+                            <span id="opacity-value">80%</span>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label for="overlay-size">Size</label>
+                            <input type="range" id="overlay-size" min="50" max="150" value="100">
+                            <span id="size-value">100%</span>
+                        </div>
+                        
+                        <div class="control-buttons">
+                            <button id="reset-overlay" class="btn btn-outline">
+                                <i class="fas fa-undo"></i> Reset
+                            </button>
+                            <button id="remove-overlay" class="btn btn-outline">
+                                <i class="fas fa-times"></i> Remove
+                            </button>
+                        </div>
+                        
+                        <button id="save-fit" class="save-fit-btn">
+                            <i class="fas fa-save"></i> Save Fit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2>Why Choose VirtualFit?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-camera-retro"></i>
+                    <h3>Real-Time Try-On</h3>
+                    <p>Use your camera to see how clothes look on you instantly</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-ruler-combined"></i>
+                    <h3>Smart Sizing</h3>
+                    <p>AI detects your body measurements for perfect fit recommendations</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobile Friendly</h3>
+                    <p>Works seamlessly on all devices - desktop, tablet, and mobile</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-palette"></i>
+                    <h3>Mix & Match</h3>
+                    <p>Experiment with different outfits and color combinations</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="container">
+            <h2>Shop by Category</h2>
+            <div class="category-grid">
+                <div class="category-card" data-category="men">
+                    <div class="category-image">
+                        <i class="fas fa-male fa-4x"></i>
+                    </div>
+                    <h3>Men's Collection</h3>
+                    <p>Discover the latest trends in men's fashion</p>
+                    <a href="shop.html?category=men" class="btn btn-outline">Shop Men</a>
+                </div>
+                <div class="category-card" data-category="women">
+                    <div class="category-image">
+                        <i class="fas fa-female fa-4x"></i>
+                    </div>
+                    <h3>Women's Collection</h3>
+                    <p>Explore elegant and stylish women's wear</p>
+                    <a href="shop.html?category=women" class="btn btn-outline">Shop Women</a>
+                </div>
+                <div class="category-card" data-category="kids">
+                    <div class="category-image">
+                        <i class="fas fa-child fa-4x"></i>
+                    </div>
+                    <h3>Kids Collection</h3>
+                    <p>Fun and comfortable clothing for children</p>
+                    <a href="shop.html?category=kids" class="btn btn-outline">Shop Kids</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Choose Your Item</h3>
+                    <p>Browse our collection and select the clothing item you want to try</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Start Virtual Try-On</h3>
+                    <p>Click the "Try On" button and allow camera access</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>See the Magic</h3>
+                    <p>Watch as AI overlays the clothing on your live video feed</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Make Your Decision</h3>
+                    <p>Take screenshots, compare options, and purchase with confidence</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-tshirt"></i> VirtualFit</h3>
+                    <p>Revolutionizing online shopping with AI-powered virtual try-on technology.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="virtual-tryon.html">Virtual Try-On</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="shop.html?category=men">Men's Clothing</a></li>
+                        <li><a href="shop.html?category=women">Women's Clothing</a></li>
+                        <li><a href="shop.html?category=kids">Kids' Clothing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-envelope"></i> info@virtualfit.com</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Fashion St, Style City</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 VirtualFit. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="virtual-tryon.js"></script>
+</body>
+</html>
